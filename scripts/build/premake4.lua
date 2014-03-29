@@ -1,25 +1,28 @@
+newoption({
+		trigger = "buildpath",
+		description = "build path",
+		value = "path"
+	})
+	
+newoption({
+	trigger = "targetpath",
+	description = "target path",
+	value = "path"
+})
+
+if not (type (_OPTIONS["buildpath"]) == "string")
+then
+	_OPTIONS["buildpath"] = path.getabsolute(_WORKING_DIR)
+end
+
+if not (type (_OPTIONS["targetpath"]) == "string")
+then
+	_OPTIONS["targetpath"] = path.getabsolute(_WORKING_DIR)
+end
+
 solution "applescript"
 	configurations {"Release", "Debug"}
-	location (_WORKING_DIR)
+	location (_OPTIONS["buildpath"])
 		
-	project "applescript"
-		kind "StaticLib"
-		targetdir (_WORKING_DIR .. "/lib")
-		language "C"
-		files { 
-			"src/applescript/*.*",
-			"include/applescript/*.h"
-		}
-		includedirs { "include" }
-		links {}
-		
-	for _, app in ipairs{"as-exec", "as-tell"}
-	do
-		project (app)
-			kind "ConsoleApp"
-			targetdir (_WORKING_DIR .. "/bin")
-			language "C"
-			includedirs { "include" }
-			files { "src/apps/" .. app .. ".c" }
-			links { "applescript", "Cocoa.framework" }	
-	end
+	dofile("libapplescript.lua")
+	dofile("apps.lua")

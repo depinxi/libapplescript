@@ -24,7 +24,7 @@ ifeq ($(config),release)
   TARGETDIR  = lib
   TARGET     = $(TARGETDIR)/libapplescript.a
   DEFINES   +=
-  INCLUDES  += -I../scripts/build/include
+  INCLUDES  += -I../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
@@ -46,7 +46,7 @@ ifeq ($(config),debug)
   TARGETDIR  = lib
   TARGET     = $(TARGETDIR)/libapplescript.a
   DEFINES   +=
-  INCLUDES  += -I../scripts/build/include
+  INCLUDES  += -I../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
@@ -64,6 +64,7 @@ ifeq ($(config),debug)
 endif
 
 OBJECTS := \
+	$(OBJDIR)/applescript.o \
 
 RESOURCES := \
 
@@ -123,6 +124,10 @@ $(GCH): $(PCH)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) -x c-header $(ALL_CFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
+
+$(OBJDIR)/applescript.o: ../src/applescript/applescript.m
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))
