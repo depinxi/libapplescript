@@ -1,28 +1,17 @@
-newoption({
-		trigger = "buildpath",
-		description = "build path",
-		value = "path"
-	})
-	
-newoption({
-	trigger = "targetpath",
-	description = "target path",
-	value = "path"
-})
+--[[
+libapplescript
+A tiny C library to execute AppleScript
 
-if not (type (_OPTIONS["buildpath"]) == "string")
-then
-	_OPTIONS["buildpath"] = path.getabsolute(_WORKING_DIR)
-end
+Copyright © 2014 by Renaud Guillard (dev@nore.fr)
+Distributed under the terms of the MIT License, see LICENSE
+--]]
 
-if not (type (_OPTIONS["targetpath"]) == "string")
-then
-	_OPTIONS["targetpath"] = path.getabsolute(_WORKING_DIR)
-end
+dofile ("options.lua")
 
 solution "applescript"
 	configurations {"Release", "Debug"}
 	location (_OPTIONS["buildpath"])
+	targetdir (_OPTIONS["targetpath"])
 		
 	dofile("libapplescript.lua")
 	dofile("apps.lua")
