@@ -23,9 +23,9 @@ using the script located in `scripts/build/premake4.lua`
 premake4 --file=script/build/premake4 [--buildpath=] [--targetpath=] gmake
 ```
 With
+
 * `buildpath`: The place where to put the build files (Makefile etc.)
 * `targetpath`: The base path of the targets output. Equivalent of the `--prefix` on most `configure` scripts 
-
 
 ## Linking
 A program using `libapplescript` have to be linked against the Cocoa framework too
