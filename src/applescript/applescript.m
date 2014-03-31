@@ -9,6 +9,7 @@
 #include "applescript/applescript.h"
 #include <AppleScriptObjC/AppleScriptObjC.h>
 
+int applescript_execute_nsstring(NSString *nsAppleScriptCode);
 int applescript_execute_nsstring(NSString *nsAppleScriptCode)
 {
 	int resultCode = 0;
