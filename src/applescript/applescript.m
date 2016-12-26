@@ -24,12 +24,10 @@ int applescript_execute_nsstring(NSString *nsAppleScriptCode)
 		if (!res)
 		{
 			resultCode = kAppleScriptResultInvalidScript;
-			//NSLog(@"%@", errInfo);
 		}
 		else
 		{
 			resultCode = [res int32Value];
-			//NSLog(@"%@\n", [res stringValue]);
 		}
 		
 		[as release];
