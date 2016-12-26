@@ -45,7 +45,7 @@ int applescript_execute_cstring(const char *applescriptCode)
 		NSString *nsAppleScriptCode = [
 		                                  [NSString alloc]
 		                                  initWithCString: applescriptCode
-		                                  encoding: NSASCIIStringEncoding
+		                                  encoding: (NSUInteger)NSASCIIStringEncoding
 		                              ];
 		                              
 		resultCode = applescript_execute_nsstring(nsAppleScriptCode);
