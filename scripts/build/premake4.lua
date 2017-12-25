@@ -1,17 +1,13 @@
---[[
-libapplescript
-A tiny C library to execute AppleScript
+--------------------------------------------
+-- libapplescript workspace (premake 4)
+--------------------------------------------
 
-Copyright © 2014 by Renaud Guillard (dev@nore.fr)
-Distributed under the terms of the MIT License, see LICENSE
---]]
-
-dofile ("options.lua")
+dofile "options.lua"
 
 solution "applescript"
-	configurations {"Release", "Debug"}
-	location (_OPTIONS["buildpath"])
+	configurations { "Release", "Debug" }
+	location (_OPTIONS["location"])
 	targetdir (_OPTIONS["targetpath"])
 		
-	dofile("libapplescript.lua")
-	dofile("apps.lua")
+	dofile "libapplescript.lua"
+	dofile "apps.lua"

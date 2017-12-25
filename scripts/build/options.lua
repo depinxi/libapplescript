@@ -1,17 +1,33 @@
+--------------------------------------------
+-- libapplescript premake options
+--------------------------------------------
 
-for t, d in pairs {
-	buildpath = "Build path",
-	targetpath = "Target path"
+local defaultLocation = path.getabsolute (path.getdirectory(_SCRIPT) .. "/../../build")
+local defaultTarget = path.getabsolute (path.getdirectory(_SCRIPT) .. "/../../dist/%{cfg.name:gsub('(.*)|(.*)', '%2/%1')}") 
+
+newoption {
+	trigger = "location",
+	description = "Build script location",
+	value = "path",
+	default = defaultLocation 
 }
-do
-	newoption({
-		trigger = t,
-		description = d,
-		value = "path"
-	})
-	
-	if not (type (_OPTIONS[t]) == "string")
-	then
-		_OPTIONS[t] = path.getabsolute(_WORKING_DIR)
-	end	
+
+newoption {
+	trigger = "targetpath",
+	description = "Output directory",
+	value = "path",
+	default = defaultTarget
+}
+
+-- premake 4 compatibility
+
+if not (type (_OPTIONS["location"]) == "string")
+then 
+	_OPTIONS["location"] = defaultLocation
 end
+
+if not (type (_OPTIONS["targetpath"]) == "string")
+then
+	_OPTIONS["targetpath"] = defaultTarget
+end
+

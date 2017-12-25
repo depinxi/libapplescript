@@ -1,7 +1,10 @@
+--------------------------------------------
+-- libapplescript
+--------------------------------------------
+
 project "applescript"
 	kind "StaticLib"
-	location (_OPTIONS["buildpath"])
-	targetdir (_OPTIONS["targetpath"] .. "/lib")
+	if type (_OPTIONS["targetpath"] == "string") then targetdir (_OPTIONS["targetpath"] .. "/lib") end
 	language "C"
 	files { 
 		"../../src/applescript/*.*",
