@@ -12,14 +12,16 @@ ifeq ($(config),release)
   applescript_config = release
   as_exec_config = release
   as_tell_config = release
+  as_info_config = release
 endif
 ifeq ($(config),debug)
   applescript_config = debug
   as_exec_config = debug
   as_tell_config = debug
+  as_info_config = debug
 endif
 
-PROJECTS := applescript as-exec as-tell
+PROJECTS := applescript as-exec as-tell as-info
 
 .PHONY: all clean help $(PROJECTS) 
 
@@ -43,10 +45,17 @@ ifneq (,$(as_tell_config))
 	@${MAKE} --no-print-directory -C . -f as-tell.make config=$(as_tell_config)
 endif
 
+as-info: applescript
+ifneq (,$(as_info_config))
+	@echo "==== Building as-info ($(as_info_config)) ===="
+	@${MAKE} --no-print-directory -C . -f as-info.make config=$(as_info_config)
+endif
+
 clean:
 	@${MAKE} --no-print-directory -C . -f applescript.make clean
 	@${MAKE} --no-print-directory -C . -f as-exec.make clean
 	@${MAKE} --no-print-directory -C . -f as-tell.make clean
+	@${MAKE} --no-print-directory -C . -f as-info.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -61,5 +70,6 @@ help:
 	@echo "   applescript"
 	@echo "   as-exec"
 	@echo "   as-tell"
+	@echo "   as-info"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"

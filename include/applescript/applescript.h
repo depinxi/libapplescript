@@ -6,6 +6,11 @@
  ***************************************************************************************
  */
 
+/**
+ * @file
+ * @brief libapplescript library API
+ */
+
 #if !defined(__APPLESCRIPT_APPLESCRIPT_H__)
 #define __APPLESCRIPT_APPLESCRIPT_H__
 
@@ -17,9 +22,32 @@
 #	endif
 #endif
 
+#define APPLESCRIPT_VERSION_MAJOR 1
+#define APPLESCRIPT_VERSION_MINOR 0
+#define APPLESCRIPT_VERSION_PATCH 0
+#define APPLESCRIPT_VERSION ( \
+			(APPLESCRIPT_VERSION_MAJOR * 10000) \
+			+ (APPLESCRIPT_VERSION_MINOR * 100) \
+			+ (APPLESCRIPT_VERSION_PATCH))
+
+
+#define APPLESCRIPT_QUOTEME_(x) #x
+#define APPLESCRIPT_QUOTEME(x) APPLESCRIPT_QUOTEME_(x)
+
+#define APPLESCRIPT_VERSIONSTRING \
+		APPLESCRIPT_QUOTEME(APPLESCRIPT_VERSION_MAJOR) \
+		"." \
+		APPLESCRIPT_QUOTEME(APPLESCRIPT_VERSION_MINOR) \
+		"." \
+		APPLESCRIPT_QUOTEME(APPLESCRIPT_VERSION_PATCH)
+
+
+/**
+ * Execution result codes
+ */
 enum applescript_resultcode
 {
-	kAppleScriptResultInvalidScript = 256
+    kAppleScriptResultInvalidScript = 256//!< AppleScript code is not valid
 };
 
 /**
@@ -27,8 +55,8 @@ enum applescript_resultcode
  *
  * @param applescriptCode AppleScript code to execute
  *
- * @return On success, exit code return by the @param applescriptCode execution
- * 	or kAppleScriptResultInvalidScript if @param applescriptCode failed to execute
+ * @return On success, exit code return by the @c applescriptCode execution
+ * 	or kAppleScriptResultInvalidScript if @c applescriptCode failed to execute
  */
 APPLESCRIPTAPI int applescript_execute_cstring(const char *applescriptCode);
 
@@ -43,8 +71,8 @@ APPLESCRIPTAPI int applescript_execute_cstring(const char *applescriptCode);
  * @param applicationName Application name
  * @param applescriptCode
  *
- * @return On success, exit code return by the @param applescriptCode execution
- * 	or kAppleScriptResultInvalidScript if @param applescriptCode failed to execute
+ * @return On success, exit code return by the @c applescriptCode execution
+ * 	or kAppleScriptResultInvalidScript if @c applescriptCode failed to execute
  */
 APPLESCRIPTAPI int applescript_tell_application_cstring(const char *applicationName, const char *applescriptCode);
 

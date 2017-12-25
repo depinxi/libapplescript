@@ -2,7 +2,7 @@
 -- libapplescript command line tools
 --------------------------------------------
 
-for _, app in ipairs{"as-exec", "as-tell"}
+for _, app in ipairs{"as-exec", "as-tell", "as-info"}
 do
 	project (app)
 		kind "ConsoleApp"
