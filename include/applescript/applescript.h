@@ -9,10 +9,14 @@
 /**
  * @file
  * @brief libapplescript library API
+ *
+ * @see https://developer.apple.com/documentation/foundation/nsapplescript?language=objc
  */
 
 #if !defined(__APPLESCRIPT_APPLESCRIPT_H__)
 #define __APPLESCRIPT_APPLESCRIPT_H__
+
+#include <stdio.h>
 
 #if !defined (APPLESCRIPTAPI)
 #	if defined(__cplusplus)
@@ -22,7 +26,7 @@
 #	endif
 #endif
 
-#define APPLESCRIPT_VERSION_MAJOR 1
+#define APPLESCRIPT_VERSION_MAJOR 2
 #define APPLESCRIPT_VERSION_MINOR 0
 #define APPLESCRIPT_VERSION_PATCH 0
 #define APPLESCRIPT_VERSION ( \
@@ -41,24 +45,17 @@
 		"." \
 		APPLESCRIPT_QUOTEME(APPLESCRIPT_VERSION_PATCH)
 
-
-/**
- * Execution result codes
- */
-enum applescript_resultcode
-{
-    kAppleScriptResultInvalidScript = 256//!< AppleScript code is not valid
-};
+typedef void (*applescript_event_handler)(int event_index, size_t event_count, int event_type, const char *evebt_value, void *cookie);
 
 /**
  * Execute arbitrary AppleScript code
  *
  * @param applescriptCode AppleScript code to execute
  *
- * @return On success, exit code return by the @c applescriptCode execution
- * 	or kAppleScriptResultInvalidScript if @c applescriptCode failed to execute
+ * @return @c 0 on success. Obherwise the value of the @c NSAppleScriptErrorNumber key
+ * of the @c NSDictionnary error information.
  */
-APPLESCRIPTAPI int applescript_execute_cstring(const char *applescriptCode);
+APPLESCRIPTAPI int applescript_execute_cstring(const char *applescriptCode, applescript_event_handler event_handler, void *cookie);
 
 /**
  * Tell an application to execute on or more commands
@@ -71,9 +68,9 @@ APPLESCRIPTAPI int applescript_execute_cstring(const char *applescriptCode);
  * @param applicationName Application name
  * @param applescriptCode
  *
- * @return On success, exit code return by the @c applescriptCode execution
- * 	or kAppleScriptResultInvalidScript if @c applescriptCode failed to execute
+ * @return @c 0 on success. Obherwise the value of the @c NSAppleScriptErrorNumber key
+ * of the @c NSDictionnary error information.
  */
-APPLESCRIPTAPI int applescript_tell_application_cstring(const char *applicationName, const char *applescriptCode);
+APPLESCRIPTAPI int applescript_tell_application_cstring(const char *applicationName, const char *applescriptCode, applescript_event_handler event_handler, void *cookie);
 
 #endif /* __APPLESCRIPT_APPLESCRIPT_H__ */
