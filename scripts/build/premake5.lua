@@ -10,6 +10,10 @@ workspace "applescript"
 	targetdir (_OPTIONS["targetpath"])
 
 	warnings "Extra"
+	filter "toolset:gcc or clang"
+		buildoptions {"-pedantic"}
+		
+	filter {}
 	
 	filter 'configurations:Debug'
 		runtime 'Debug'
