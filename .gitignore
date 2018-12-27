@@ -1,3 +1,7 @@
 # Eclipse project files
 \.project
 \.cproject
+
+# Derived data
+/build/obj
+/dist
