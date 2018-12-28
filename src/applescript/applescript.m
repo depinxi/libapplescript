@@ -69,7 +69,7 @@ int applescript_execute_nsstring(NSString *nsAppleScriptCode, applescript_event_
 			 */
 			
 			NSObject *errorCode = [errInfo objectForKey: NSAppleScriptErrorNumber];
-
+			
 			resultCode = -1;
 			
 			if (errorCode && [errorCode isKindOfClass:[NSNumber class]])

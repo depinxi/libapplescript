@@ -6,13 +6,13 @@ void handle_event(int index, size_t count, int type, const char *value, void *co
 	(void)count;
 	(void)type;
 	(void)cookie;
-
+	
 	if (index < 0)
 	{
 		fprintf(stderr, "%s\n", value);
 		return;
 	}
-
+	
 	fprintf(stdout, "%s\n", value);
 }
 
