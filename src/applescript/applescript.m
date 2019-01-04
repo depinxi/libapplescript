@@ -22,13 +22,13 @@ void applescript_process_descriptor(NSAppleEventDescriptor *descriptor, int even
 	
 	if (type == typeAEList)
 	{
-		int a = 1;
-		int c = [descriptor numberOfItems];
+		NSInteger a = 1;
+		NSInteger c = [descriptor numberOfItems];
 		
 		for (a = 1; a <= c; ++a)
 		{
 			NSAppleEventDescriptor *d = [descriptor descriptorAtIndex: a];
-			applescript_process_descriptor(d, event_index + (a - 1), (event_count + c - 1), event_handler, cookie);
+			applescript_process_descriptor(d, event_index + ((int)a - 1), (event_count + (size_t)c - 1), event_handler, cookie);
 		}
 		
 		return;
@@ -37,7 +37,7 @@ void applescript_process_descriptor(NSAppleEventDescriptor *descriptor, int even
 	if (event_handler)
 	{
 		NSString *s = [descriptor stringValue];
-		(*event_handler)(event_index, event_count, type, [s UTF8String], cookie);
+		(*event_handler)(event_index, event_count, (int)type, [s UTF8String], cookie);
 	}
 }
 
