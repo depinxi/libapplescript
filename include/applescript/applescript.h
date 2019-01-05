@@ -1,7 +1,7 @@
 /**************************************************************************************$
  * libapplescript - A tiny C library to execute AppleScript
  ***************************************************************************************
- * Copyright © 2014 by Renaud Guillard (dev@nore.fr)
+ * Copyright © 2014 - 2019 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  ***************************************************************************************
  */
