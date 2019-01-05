@@ -4,11 +4,21 @@
 
 project "applescript"
 	kind "StaticLib"
-	if type (_OPTIONS["targetpath"] == "string") then targetdir (_OPTIONS["targetpath"] .. "/lib") end
+	targetdir (_OPTIONS["targetpath"] .. "/lib") 
 	language "C"
-	files { 
-		"../../src/applescript/*.*",
-		"../../include/applescript/*.h"
+	files {
+		"../../include/applescript/applescript.h"
 	}
+	
+	filter {"system:" .. premake.MACOSX}
+		files {
+			"../../src/applescript/applescript.m"
+		}
+	filter {"system:not " .. premake.MACOSX}
+		files {
+			"../../src/applescript/applescript_placeholder.c"
+		}
+	filter {}
+	
 	includedirs { "../../include" }
 	links {}

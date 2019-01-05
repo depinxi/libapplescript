@@ -7,8 +7,12 @@ do
 	project (app)
 		kind "ConsoleApp"
 		language "C"
-		if type (_OPTIONS["targetpath"] == "string") then targetdir (_OPTIONS["targetpath"] .. "/bin") end
+		targetdir (_OPTIONS["targetpath"] .. "/bin")
 		includedirs { "../../include" }
 		files { "../../src/apps/" .. app .. ".c" }
-		links { "applescript", "Cocoa.framework" }	
+		
+		links { "applescript" }
+		filter {"system:" .. premake.MACOSX}
+			links { "Cocoa.framework" }
+		filter {}	
 end
