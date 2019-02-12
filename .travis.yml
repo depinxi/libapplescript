@@ -1,0 +1,7 @@
+os:
+ - osx
+
+language: c
+
+script: make all
+    
