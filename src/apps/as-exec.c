@@ -9,11 +9,18 @@ void handle_event(int index, size_t count, int type, const char *value, void *co
 	
 	if (index < 0)
 	{
-		fprintf(stderr, "%s\n", value);
+		if (value)
+		{
+			fprintf(stderr, "%s\n", value);
+		}
+		
 		return;
 	}
 	
-	fprintf(stdout, "%s\n", value);
+	if (value)
+	{
+		fprintf(stdout, "%s\n", value);
+	}
 }
 
 int main(int argc, const char **argv)
