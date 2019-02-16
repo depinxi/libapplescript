@@ -48,7 +48,7 @@ astyle:
 	
 doc: 
 	@echo "Generating source documentation"
-	@cd scripts/doxygen && doxygen	
+	@cd scripts/doxygen && doxygen 1>/dev/null
 
 $(location):
 	@mkdir -p "$(location)"

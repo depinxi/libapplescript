@@ -1,6 +1,6 @@
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "libapplescript"
-PROJECT_NUMBER         = 1.0.0
+PROJECT_NUMBER         = 2.0.1
 PROJECT_BRIEF          = "A tiny C library to execute AppleScript"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = ../../doc

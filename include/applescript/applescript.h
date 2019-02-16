@@ -28,7 +28,7 @@
 
 #define APPLESCRIPT_VERSION_MAJOR 2
 #define APPLESCRIPT_VERSION_MINOR 0
-#define APPLESCRIPT_VERSION_PATCH 0
+#define APPLESCRIPT_VERSION_PATCH 1
 #define APPLESCRIPT_VERSION ( \
 			(APPLESCRIPT_VERSION_MAJOR * 10000) \
 			+ (APPLESCRIPT_VERSION_MINOR * 100) \
@@ -53,7 +53,7 @@
  * @param event_index Event index [0-n] or -1 on error
  * @param event_count Total number of AppleEvent generated.
  * @param event_type AppleEvent type. On success, a FourCC describing the AppleEvent descriptor.
- * 	#see https://developer.apple.com/documentation/coreservices/1542788-descriptor_type_constants?language=objc
+ * 	@see https://developer.apple.com/documentation/coreservices/1542788-descriptor_type_constants?language=objc
  * 	On error, the error code
  * @param event_value On success, the string representation of the AppleEvent value.
  * On error, the error message if any
