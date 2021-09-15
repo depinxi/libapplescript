@@ -13,7 +13,7 @@ newoption {
 }
 
 newoption {
-	trigger = "targetpath",
+	trigger = "targetdir",
 	description = "Output directory",
 	value = "path",
 	default = defaultTarget
@@ -26,8 +26,8 @@ then
 	_OPTIONS["location"] = defaultLocation
 end
 
-if not (type (_OPTIONS["targetpath"]) == "string")
+if not (type (_OPTIONS["targetdir"]) == "string")
 then
-	_OPTIONS["targetpath"] = defaultTarget
+	_OPTIONS["targetdir"] = defaultTarget
 end
 

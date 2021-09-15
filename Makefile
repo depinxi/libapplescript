@@ -13,8 +13,8 @@ ifdef location
 else
 	location := build
 endif
-ifdef targetpath
-	premake_options += --targetpath=$(targetpath)
+ifdef targetdir
+	premake_options += --targetdir=$(targetdir)
 endif
 
 ifdef config
@@ -68,7 +68,7 @@ help:
 	@echo ' * gmake: Generate Makefiles using premake5'
 	@echo '   Options '
 	@echo '   * location: Build scripts location'
-	@echo '   * targetpath: Location of build output'
+	@echo '   * targetdir: Location of build output'
 	@echo '   * cc: Toolchain to use (gcc, clang)'
 	@echo '   * os: Target platform (macosx, linux, ...)'
 	@echo '   For more generation options, use premake5 directly'

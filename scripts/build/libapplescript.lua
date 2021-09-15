@@ -4,7 +4,7 @@
 
 project "applescript"
 	kind "StaticLib"
-	targetdir (_OPTIONS["targetpath"] .. "/lib") 
+	targetdir (_OPTIONS["targetdir"] .. "/lib") 
 	language "C"
 	files {
 		"../../include/applescript/applescript.h"
