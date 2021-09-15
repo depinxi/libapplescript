@@ -7,7 +7,7 @@ include "options.lua"
 workspace "applescript"
 	configurations { "Release", "Debug" }
 	location (_OPTIONS["location"])
-	targetdir (_OPTIONS["targetpath"])
+	targetdir (_OPTIONS["targetdir"])
 
 	warnings "Extra"
 	filter "toolset:gcc or clang"

@@ -7,7 +7,7 @@ do
 	project (app)
 		kind "ConsoleApp"
 		language "C"
-		targetdir (_OPTIONS["targetpath"] .. "/bin")
+		targetdir (_OPTIONS["targetdir"] .. "/bin")
 		includedirs { "../../include" }
 		files { "../../src/apps/" .. app .. ".c" }
 		
