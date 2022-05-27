@@ -26,7 +26,7 @@ ifeq ($(config),release)
   DEFINES +=
   INCLUDES += -I../include
   FORCE_INCLUDE +=
-  ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+  ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra -pedantic
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra -pedantic
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -61,7 +61,7 @@ ifeq ($(config),debug)
   DEFINES +=
   INCLUDES += -I../include
   FORCE_INCLUDE +=
-  ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+  ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O0 -g -Wall -Wextra -pedantic
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O0 -g -Wall -Wextra -pedantic
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
