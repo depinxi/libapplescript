@@ -13,8 +13,8 @@
  * @see https://developer.apple.com/documentation/foundation/nsapplescript?language=objc
  */
 
-#if !defined(__APPLESCRIPT_APPLESCRIPT_H__)
-#define __APPLESCRIPT_APPLESCRIPT_H__
+#if !defined(APPLESCRIPT_APPLESCRIPT_H__)
+#define APPLESCRIPT_APPLESCRIPT_H__
 
 #include <stdio.h>
 
@@ -89,7 +89,7 @@ APPLESCRIPTAPI int applescript_execute_cstring(const char *applescriptCode, appl
  * @endcode
  *
  * @param applicationName Application name
- * @param applescriptCode
+ * @param applescriptCode AppleScript source code
  * @param event_handler A callback to invoke for each AppleEvent generated
  * by the execution of the AppleScript code
  * @param cookie User data given to @c event_handler
@@ -99,4 +99,4 @@ APPLESCRIPTAPI int applescript_execute_cstring(const char *applescriptCode, appl
  */
 APPLESCRIPTAPI int applescript_tell_application_cstring(const char *applicationName, const char *applescriptCode, applescript_event_handler event_handler, void *cookie);
 
-#endif /* __APPLESCRIPT_APPLESCRIPT_H__ */
+#endif /* APPLESCRIPT_APPLESCRIPT_H__ */
