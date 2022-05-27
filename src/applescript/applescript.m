@@ -120,14 +120,21 @@ int applescript_execute_cstring(const char *applescriptCode, applescript_event_h
 	return 0;
 }
 
-int applescript_tell_application_cstring(const char *applicationName, const char *applescriptCode, applescript_event_handler event_handler, void *cookie)
+int applescript_tell_application_cstring(const char *applicationName,
+        const char *applescriptCode,
+        applescript_event_handler event_handler, void *cookie)
 {
 	int resultCode = 0;
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	{
-		NSString *nsAppleScriptCode = [NSString stringWithFormat:@"tell application \"%s\"\n %s\nend tell", applicationName, applescriptCode];
-		
+		NSString *app = [NSString stringWithUTF8String: applicationName];
+		NSString *code = [NSString stringWithUTF8String: applescriptCode];
+		NSString *nsAppleScriptCode = [NSString stringWithFormat:
+		                                        @"tell application \"%@\"\n %@\nend tell",
+		                                        app,
+		                                        code];
+		                                        
 		resultCode = applescript_execute_nsstring(nsAppleScriptCode, event_handler, cookie);
 	}
 	[pool drain];
