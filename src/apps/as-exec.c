@@ -1,6 +1,8 @@
 #include <applescript/applescript.h>
 #include <stdio.h>
 
+
+void handle_event(int index, size_t count, int type, const char *value, void *cookie);
 void handle_event(int index, size_t count, int type, const char *value, void *cookie)
 {
 	(void)count;
