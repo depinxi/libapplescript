@@ -117,7 +117,7 @@ int applescript_execute_cstring(const char *applescriptCode, applescript_event_h
 	}
 	[pool drain];
 	
-	return 0;
+	return resultCode;
 }
 
 int applescript_tell_application_cstring(const char *applicationName, const char *applescriptCode, applescript_event_handler event_handler, void *cookie)
